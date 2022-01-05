@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    stages {
+        stage("git") {
+            steps{
+                git 'https://github.com/rams3350/mavenrepo.git'
+            }
+        }
+        stage("hello") {
+            steps{
+                echo "hello world"
+            }
+        }
+        stage("fileexists") {
+            steps{
+                fileExists '/var/lib/jenkins/ironman'
+            }
+        }
+        stage("shell") {
+            steps{
+                sh '''#!/bin/bash
+                a=5
+                b=10
+                c=`expr $a + $b`
+                echo $c'''
+            }
+        }
+         
+         }   
+     }
